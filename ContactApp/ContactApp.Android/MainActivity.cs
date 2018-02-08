@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Plugin.Battery;
 
 namespace ContactApp.Droid
 {
@@ -20,6 +21,7 @@ namespace ContactApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            
             LoadApplication(new App());
         }
     }

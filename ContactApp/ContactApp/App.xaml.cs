@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using ContactApp.Views;
 using Xamarin.Forms;
 
 namespace ContactApp
@@ -13,7 +13,7 @@ namespace ContactApp
 		{
 			InitializeComponent();
 
-			MainPage = new ContactApp.MainPage();
+			MainPage = new NavigationPage(new ContactList());
 		}
 
 		protected override void OnStart ()

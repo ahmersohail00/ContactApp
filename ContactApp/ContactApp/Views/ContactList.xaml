@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Name="page"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ContactApp"
+             x:Class="ContactApp.Views.ContactList"
+             Title="Contacts">
+    <ContentPage.ContextAction>
+           </ContentPage.ContextAction>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="plus.png" Text="Add" Order="Primary" Command="{Binding AddContactCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout>
+        <TableView>
+        <TableRoot>
+            <TableSection Title="Battery Info">
+                    <TextCell x:Name="txtBatteryStatus"/>
+                    <TextCell x:Name="txtBatteryRemainingChargePercent"/>
+                    <TextCell x:Name="txtBatteryPowerSource"/>
+                </TableSection>
+        </TableRoot>
+    </TableView>
+    <ActivityIndicator Color="OrangeRed" IsRunning="{Binding Source={x:Reference lstContacts},Path=IsLoading}"/>
+    <ListView x:Name="lstContacts" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact, Mode=TwoWay}" ItemSelected="lstContacts_ItemSelected" IsPullToRefreshEnabled="True" Refreshing="lstContacts_Refreshing">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding FullName}" Detail="{Binding ID}">
+                    <TextCell.ContextActions>
+                        <MenuItem Text="Delete" IsDestructive="True" Command="{Binding Source={x:Reference page}, Path=ViewModel.DeleteContactCommand}" CommandParameter="{Binding .}"/>
+                    </TextCell.ContextActions>
+                </TextCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

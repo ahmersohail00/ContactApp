@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContactApp.Views.ContactDetailsPage"
+             Title="Contact Details">
+    <TableView Intent="Form">
+        <TableRoot>
+            <TableSection Title="Name">
+                <EntryCell x:Name="txtFirstName" Text="{Binding FirstName}" Label="First Name" />
+                <EntryCell x:Name="txtLastName" Text="{Binding LastName}" Label="Last Name"/>
+            </TableSection>
+            <TableSection Title="Contact">
+                <EntryCell x:Name="txtEmail" Label="Email" Text="{Binding Email}" Keyboard="Email"/>
+                <EntryCell x:Name="txtPhone" Label="Phone" Text="{Binding Phone}" Keyboard="Telephone"/>
+            </TableSection>
+            <TableSection Title="Other">
+                <SwitchCell x:Name="swcBlocked" Text="Blocked" On="{Binding Blocked}"/>
+            </TableSection>
+            <TableSection>
+                <ViewCell>
+                    <Button Text="Save" x:Name="btnSave" Clicked="btnSave_Clicked"/>
+                </ViewCell>
+            </TableSection>
+        </TableRoot>
+    </TableView>
+</ContentPage>
